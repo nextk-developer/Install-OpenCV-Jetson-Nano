@@ -6,31 +6,31 @@ echo "It will take 2.5 hours !"
 
 # reveal the CUDA location
 cd ~
-sudo sh -c "echo '/usr/local/cuda/lib64' >> /etc/ld.so.conf.d/nvidia-tegra.conf"
-sudo ldconfig
+sh -c "echo '/usr/local/cuda/lib64' >> /etc/ld.so.conf.d/nvidia-tegra.conf"
+ldconfig
 
 # install the dependencies
-sudo apt-get install -y build-essential cmake git unzip pkg-config zlib1g-dev
-sudo apt-get install -y libjpeg-dev libjpeg8-dev libjpeg-turbo8-dev libpng-dev libtiff-dev
-sudo apt-get install -y libavcodec-dev libavformat-dev libswscale-dev libglew-dev
-sudo apt-get install -y libgtk2.0-dev libgtk-3-dev libcanberra-gtk*
-sudo apt-get install -y python-dev python-numpy python-pip
-sudo apt-get install -y python3-dev python3-numpy python3-pip
-sudo apt-get install -y libxvidcore-dev libx264-dev libgtk-3-dev
-sudo apt-get install -y libtbb2 libtbb-dev libdc1394-22-dev libxine2-dev
-sudo apt-get install -y gstreamer1.0-tools libv4l-dev v4l-utils qv4l2 
-sudo apt-get install -y libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-dev
-sudo apt-get install -y libavresample-dev libvorbis-dev libxine2-dev libtesseract-dev
-sudo apt-get install -y libfaac-dev libmp3lame-dev libtheora-dev libpostproc-dev
-sudo apt-get install -y libopencore-amrnb-dev libopencore-amrwb-dev
-sudo apt-get install -y libopenblas-dev libatlas-base-dev libblas-dev
-sudo apt-get install -y liblapack-dev liblapacke-dev libeigen3-dev gfortran
-sudo apt-get install -y libhdf5-dev protobuf-compiler
-sudo apt-get install -y libprotobuf-dev libgoogle-glog-dev libgflags-dev
+apt-get install -y build-essential cmake git unzip pkg-config zlib1g-dev
+apt-get install -y libjpeg-dev libjpeg8-dev libjpeg-turbo8-dev libpng-dev libtiff-dev
+apt-get install -y libavcodec-dev libavformat-dev libswscale-dev libglew-dev
+apt-get install -y libgtk2.0-dev libgtk-3-dev libcanberra-gtk*
+apt-get install -y python-dev python-numpy python-pip
+apt-get install -y python3-dev python3-numpy python3-pip
+apt-get install -y libxvidcore-dev libx264-dev libgtk-3-dev
+apt-get install -y libtbb2 libtbb-dev libdc1394-22-dev libxine2-dev
+apt-get install -y gstreamer1.0-tools libv4l-dev v4l-utils qv4l2 
+apt-get install -y libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-dev
+apt-get install -y libavresample-dev libvorbis-dev libxine2-dev libtesseract-dev
+apt-get install -y libfaac-dev libmp3lame-dev libtheora-dev libpostproc-dev
+apt-get install -y libopencore-amrnb-dev libopencore-amrwb-dev
+apt-get install -y libopenblas-dev libatlas-base-dev libblas-dev
+apt-get install -y liblapack-dev liblapacke-dev libeigen3-dev gfortran
+apt-get install -y libhdf5-dev protobuf-compiler
+apt-get install -y libprotobuf-dev libgoogle-glog-dev libgflags-dev
 
 # remove old versions or previous builds
 cd ~ 
-sudo rm -rf opencv*
+rm -rf opencv*
 # download the latest version
 wget -O opencv.zip https://github.com/opencv/opencv/archive/4.5.4.zip 
 wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.5.4.zip 
@@ -93,13 +93,13 @@ else
 fi
 make -j ${NO_JOB} 
 
-sudo rm -r /usr/include/opencv4/opencv2
-sudo make install
-sudo ldconfig
+rm -r /usr/include/opencv4/opencv2
+make install
+ldconfig
 
 # cleaning (frees 300 MB)
 make clean
-sudo apt-get update
+apt-get update
 
 echo "Congratulations!"
 echo "You've successfully installed OpenCV 4.5.4 on your Jetson Nano"
