@@ -9,6 +9,7 @@ sh -c "echo '/usr/local/cuda/lib64' >> /etc/ld.so.conf.d/nvidia-tegra.conf"
 ldconfig
 
 # install the dependencies
+apt-get update
 apt-get install -y build-essential cmake git unzip pkg-config
 apt-get install -y libjpeg-dev libpng-dev libtiff-dev
 apt-get install -y libavcodec-dev libavformat-dev libswscale-dev
@@ -92,13 +93,15 @@ else
 fi
 make -j ${NO_JOB} 
 
-rm -r /usr/include/opencv4/opencv2
 make install
 ldconfig
 
 # cleaning (frees 300 MB)
 make clean
 apt-get update
+
+cd ~ 
+rm -rf opencv*
 
 echo "Congratulations!"
 echo "You've successfully installed OpenCV 4.5.1 on your Jetson Nano"
