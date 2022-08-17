@@ -13,7 +13,7 @@ ldconfig
 apt-get update
 apt-get install -y build-essential cmake git unzip pkg-config zlib1g-dev
 apt-get install -y libjpeg-dev libjpeg8-dev libjpeg-turbo8-dev libpng-dev libtiff-dev
-apt-get install -y libavcodec-dev libavformat-dev libswscale-dev libglew-dev
+apt-get install -y libglew-dev
 apt-get install -y libgtk2.0-dev libgtk-3-dev libcanberra-gtk*
 apt-get install -y python-dev python-numpy python-pip
 apt-get install -y python3-dev python3-numpy python3-pip
