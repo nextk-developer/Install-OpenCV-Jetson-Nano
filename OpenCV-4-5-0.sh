@@ -82,15 +82,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 -D BUILD_EXAMPLES=OFF ..
 
 # run make
-FREE_MEM="$(free -m | awk '/^Swap/ {print $2}')"
-# Use "-j 4" only swap space is larger than 3.5GB
-if [[ "FREE_MEM" -gt "3500" ]]; then
-  NO_JOB=4
-else
-  echo "Due to limited swap, make only uses 1 core"
-  NO_JOB=1
-fi
-make -j ${NO_JOB} 
+make -j $(nproc)
 
 make install
 ldconfig
